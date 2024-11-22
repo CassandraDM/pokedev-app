@@ -7,8 +7,8 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 import { useRouter } from "expo-router";
 import useGetGeneralTypes from "@/hook/useGetGeneralTypes";
 

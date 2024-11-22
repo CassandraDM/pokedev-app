@@ -15,14 +15,14 @@ export default function Header() {
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
-    route.push(`../pokemon-list/search/${query}`);
+    route.push(`pokemon-list/search/${query}`);
   };
 
   return (
     <View style={styles.headerContainer}>
       <View style={styles.header}>
         <Image
-          source={require("../../assets/images/pokedev.png")}
+          source={require("../assets/images/pokedev.png")}
           style={styles.logo}
         ></Image>
       </View>

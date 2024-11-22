@@ -1,41 +1,55 @@
-// import useGet1PokemonByType from "@/hook/useGet1PokemonByType";
-// import { useEffect, useState } from "react";
+import useGet1PokemonByType from "@/hook/useGet1PokemonByType";
+import { useEffect, useState } from "react";
 import {
   View,
   TextInput,
   Alert,
-  Button,
   StyleSheet,
   Text,
-  Vibration,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from "react-native";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import useGetRandomPokemon from "@/hook/useGetRandomPokemon";
 
 export default function FightScreen() {
-  //   const [type, setType] = useState("");
-  //   const [teamPokemon, setTeamPokemon] = useState<any>(null);
+  const [type, setType] = useState("");
+  const teamPokemon = useGet1PokemonByType(type);
+  const ennemyPokemon = useGetRandomPokemon();
 
-  //   useEffect(() => {
-  //     if (type) {
-  //       const pokemon = useGet1PokemonByType(type);
-  //       setTeamPokemon(pokemon);
-  //     }
-  //   }, [type]);
+  const handleFormSubmit = () => {
+    if (!teamPokemon) {
+      Alert.alert("Error", "Pokemon Not Found");
+      return;
+    }
+    Alert.alert(
+      "Team Update",
+      `Pokemon ${teamPokemon.name} added to your team!`
+    );
+    // Vibration.vibrate(200);
+  };
 
-  //   const handleFormSubmit = () => {
-  //     if (!teamPokemon) {
-  //       Alert.alert("Error", "Pokemon Not Found");
-  //       return;
-  //     }
-  //     Alert.alert(
-  //       "Team Update",
-  //       `Pokemon ${teamPokemon.name} added to your team!`
-  //     );
-  //     // Vibration.vibrate(200);
-  //   };
+  //affter the teamPokemon is set, an alert with the ennemy pop after a time of 3seconds
+  useEffect(() => {
+    if (teamPokemon) {
+      setTimeout(() => {
+        Alert.alert("Ennemy", `A wild ${ennemyPokemon.name} appeared!`);
+        // Vibration.vibrate(200);
+      }, 3000);
+    }
+  }, [teamPokemon]);
+
+  //after 3seconds of the ennemy pop, the fight result will be shown
+  useEffect(() => {
+    if (ennemyPokemon) {
+      setTimeout(() => {
+        Alert.alert("Fight Result", "You Win!");
+        // Vibration.vibrate(200);
+      }, 6000);
+    }
+  }, [ennemyPokemon]);
 
   return (
     <ImageBackground
@@ -45,11 +59,34 @@ export default function FightScreen() {
       <View style={styles.container}>
         <Header />
         <View>
-          <TextInput style={styles.input} placeholder="Enter Pokémon type" />
-          <TouchableOpacity style={styles.button}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter Pokémon type"
+            value={type}
+            onChangeText={setType}
+          />
+          <TouchableOpacity style={styles.button} onPress={handleFormSubmit}>
             <Text style={styles.buttonText}>Search</Text>
           </TouchableOpacity>
         </View>
+        {teamPokemon?.sprite && (
+          <View>
+            <Image
+              source={{ uri: teamPokemon.sprite }}
+              style={styles.pokemonImage}
+            />
+            <Text>{teamPokemon.name}</Text>
+          </View>
+        )}
+        {ennemyPokemon?.sprite && (
+          <View>
+            <Image
+              source={{ uri: ennemyPokemon.sprite }}
+              style={styles.pokemonImage}
+            />
+            <Text>{ennemyPokemon.name}</Text>
+          </View>
+        )}
         <Footer />
       </View>
     </ImageBackground>
@@ -101,5 +138,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
+  },
+
+  pokemonImage: {
+    width: 100,
+    height: 100,
+    marginTop: 20,
   },
 });

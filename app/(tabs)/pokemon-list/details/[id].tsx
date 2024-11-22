@@ -1,5 +1,5 @@
-import Footer from "@/app/components/Footer";
-import Header from "@/app/components/Header";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import useGetPokemonById from "@/hook/useGetPokemonById";
 import { useLocalSearchParams } from "expo-router";
 import { View, Image, Text, StyleSheet, ImageBackground } from "react-native";

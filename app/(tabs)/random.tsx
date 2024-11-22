@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import useGetRandomPokemon from "@/hook/useGetRandomPokemon";
 
 export default function RandomMealScreen() {

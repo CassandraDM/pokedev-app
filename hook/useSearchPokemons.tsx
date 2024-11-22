@@ -1,7 +1,8 @@
+import { PokemonDTO } from "@/dto/PokemonDTO";
 import { useEffect, useState } from "react";
 
-export default function useSearchPokemons(query: string) {
-  const [pokemons, setPokemons] = useState<any[]>([]);
+export default function useSearchPokemon(query: string) {
+  const [pokemon, setPokemon] = useState<null | PokemonDTO>(null);
 
   useEffect(() => {
     (async () => {
@@ -10,8 +11,10 @@ export default function useSearchPokemons(query: string) {
 
       const data = await response.json();
 
-      setPokemons(data);
+      console.log(data);
+
+      setPokemon(data);
     })();
   }, [query]);
-  return pokemons;
+  return pokemon;
 }

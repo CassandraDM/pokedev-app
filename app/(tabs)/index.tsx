@@ -7,8 +7,8 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import useGetRandom6Pokemons from "@/hook/useGetRandom6Pokemons";
 import useGetRandom6GeneralTypes from "@/hook/useGetRandom6GeneralTypes";
 import { useRouter } from "expo-router";
