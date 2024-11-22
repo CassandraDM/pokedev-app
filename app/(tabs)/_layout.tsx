@@ -35,6 +35,16 @@ export default function RootLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="random"
+        options={{
+          title: "Pokémon aléatoire",
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="shuffle" color={color} size={size} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

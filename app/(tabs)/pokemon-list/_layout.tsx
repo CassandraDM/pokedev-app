@@ -6,9 +6,7 @@ export default function PokemonListLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Listes Des Pokemons ",
-          headerTransparent: true,
-          headerTintColor: "#fff",
+          headerShown: false,
         }}
       />
       <Stack.Screen

@@ -7,9 +7,7 @@ export default function TypeListLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Liste Des Types",
-          headerTransparent: true,
-          headerTintColor: "#fff",
+          headerShown: false,
         }}
       />
       <Stack.Screen
