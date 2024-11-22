@@ -1,6 +1,6 @@
-import { PokemonDTO } from "@/dto/PokemonDto";
 import { useState, useEffect } from "react";
 import useGetPokemons from "./useGetPokemons";
+import { PokemonDTO } from "@/dto/PokemonDTO";
 
 export default function useGetRandom6Pokemons() {
   const pokemons = useGetPokemons();

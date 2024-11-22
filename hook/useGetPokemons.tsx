@@ -1,4 +1,4 @@
-import { PokemonDTO } from "@/dto/PokemonDto";
+import { PokemonDTO } from "@/dto/PokemonDTO";
 import { useEffect } from "react";
 import { useState } from "react";
 

@@ -1,7 +1,7 @@
 import { GeneralTypeDTO } from "@/dto/GeneralTypeDTO";
 import { useState, useEffect } from "react";
 
-export default function useGeneralType() {
+export default function useGetGeneralTypes() {
   const [types, setTypes] = useState<GeneralTypeDTO[]>([]);
 
   useEffect(() => {

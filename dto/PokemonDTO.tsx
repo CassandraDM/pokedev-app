@@ -1,6 +1,6 @@
 import { EvolutionDTO } from "./EvolutionDTO";
 import { ResistanceDTO } from "./ResistanceDTO";
-import { StatsDTO } from "./StatsDto";
+import { StatsDTO } from "./StatsDTO";
 import { TypeDTO } from "./TypeDTO";
 
 export interface PokemonDTO {

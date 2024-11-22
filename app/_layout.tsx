@@ -9,8 +9,9 @@ export default function RootLayout() {
       style={styles.backgroundImage}
     >
       <StatusBar style="light" translucent />
+      <StatusBar style="light" translucent />
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
     </ImageBackground>
   );
