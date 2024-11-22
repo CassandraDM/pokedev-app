@@ -11,6 +11,8 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function FightScreen() {
   //   const [type, setType] = useState("");
@@ -40,15 +42,16 @@ export default function FightScreen() {
       source={require("../../assets/images/bg-pokemon.png")}
       style={styles.backgroundImage}
     >
-      <TextInput
-        style={styles.input}
-        placeholder="Enter Pokémon type"
-        //        value={type}
-        //       onChangeText={setType}
-      />
-      <TouchableOpacity>
-        <Text>Search</Text>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <Header />
+        <View>
+          <TextInput style={styles.input} placeholder="Enter Pokémon type" />
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Search</Text>
+          </TouchableOpacity>
+        </View>
+        <Footer />
+      </View>
     </ImageBackground>
   );
 }
@@ -57,15 +60,46 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingTop: 30,
+    width: "100%",
   },
   input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
+    width: "100%",
+    height: 50,
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    fontSize: 18,
+    marginBottom: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
   },
-  //   container: {
-  //     flex: 1,
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //   },
+  button: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "#1E90FF",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });

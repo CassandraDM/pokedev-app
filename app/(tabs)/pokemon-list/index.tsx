@@ -74,7 +74,7 @@ export default function PokemonList() {
               onPress={() => goToPokemonDetailsScreen(pokemon.id)}
             >
               <Image source={{ uri: pokemon.image }} style={styles.image} />
-              <Text style={styles.name}>{pokemon.name}</Text>
+              <Text style={styles.pokemonName}>{pokemon.name}</Text>
             </TouchableOpacity>
           )}
         />
@@ -98,30 +98,48 @@ const styles = StyleSheet.create({
   },
   generationContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    paddingTop: 10,
-    marginBottom: 20,
-    gap: 10,
+    height: 80,
+    alignItems: "center",
+    paddingBottom: 10,
   },
   generationButton: {
-    padding: 10,
-    height: 40,
-    backgroundColor: "#ccc",
-    borderRadius: 5,
+    backgroundColor: "#fff",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginHorizontal: 5,
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 3,
   },
   generationText: {
     fontSize: 16,
+    fontWeight: "bold",
+    color: "#333",
   },
   pokemonContainer: {
+    backgroundColor: "#fff",
+    padding: 20,
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderRadius: 10,
     alignItems: "center",
-    marginBottom: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 3,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
+    marginBottom: 10,
   },
-  name: {
-    fontSize: 24,
+  pokemonName: {
+    fontSize: 18,
     fontWeight: "bold",
+    color: "#333",
   },
 });

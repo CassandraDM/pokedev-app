@@ -21,10 +21,14 @@ export default function RandomMealScreen() {
     >
       <View style={styles.container}>
         <Header />
-        <Image source={{ uri: pokemon.image }} style={styles.image} />
-        <Text style={styles.name}>{pokemon.name}</Text>
-        <Text style={styles.text}>{pokemon.pokedexId}</Text>
-        <Text style={styles.description}>{JSON.stringify(pokemon.stats)}</Text>
+        <View style={styles.content}>
+          <Image source={{ uri: pokemon.image }} style={styles.image} />
+          <Text style={styles.name}>{pokemon.name}</Text>
+          <Text style={styles.text}>{pokemon.pokedexId}</Text>
+          <Text style={styles.description}>
+            {JSON.stringify(pokemon.stats)}
+          </Text>
+        </View>
         <Footer />
       </View>
     </ImageBackground>
@@ -36,33 +40,47 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
   },
+  h1: {
+    fontSize: 30,
+    color: "red",
+    textAlign: "center",
+  },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingTop: 30,
+    justifyContent: "space-between",
   },
-  h1: {
-    fontSize: 24,
-    fontWeight: "bold",
+  content: {
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
+    padding: 30,
+    borderRadius: 15,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     marginBottom: 20,
   },
   name: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "bold",
     marginBottom: 10,
+    color: "#333",
   },
   text: {
-    fontSize: 18,
+    fontSize: 20,
     marginBottom: 10,
+    color: "#666",
   },
   description: {
-    fontSize: 16,
+    fontSize: 18,
     textAlign: "center",
+    color: "#777",
   },
 });
