@@ -1,3 +1,5 @@
+import Footer from "@/app/components/Footer";
+import Header from "@/app/components/Header";
 import useGetPokemonById from "@/hook/useGetPokemonById";
 import { useLocalSearchParams } from "expo-router";
 import { View, Image, Text, StyleSheet, ImageBackground } from "react-native";
@@ -16,10 +18,16 @@ export default function PokemonDetailsScreen() {
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        <Image source={{ uri: pokemon.image }} style={styles.image} />
-        <Text style={styles.name}>{pokemon.name}</Text>
-        <Text style={styles.text}>{pokemon.pokedexId}</Text>
-        <Text style={styles.description}>{JSON.stringify(pokemon.stats)}</Text>
+        <Header />
+        <View style={styles.content}>
+          <Image source={{ uri: pokemon.image }} style={styles.image} />
+          <Text style={styles.name}>{pokemon.name}</Text>
+          <Text style={styles.text}>{pokemon.pokedexId}</Text>
+          <Text style={styles.description}>
+            {JSON.stringify(pokemon.stats)}
+          </Text>
+        </View>
+        <Footer />
       </View>
     </ImageBackground>
   );
@@ -31,6 +39,11 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 80,
+  },
+  content: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",

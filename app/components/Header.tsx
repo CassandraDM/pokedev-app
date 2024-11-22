@@ -7,13 +7,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function Header() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const route = useRouter();
+
+  const [query, setQuery] = useState("");
 
   const handleSearch = () => {
-    // Handle the search logic here
-    console.log("Search query:", searchQuery);
+    route.push(`../pokemon-list/search/${query}`);
   };
 
   return (
@@ -28,8 +30,8 @@ export default function Header() {
         <TextInput
           style={styles.searchInput}
           placeholder="Search Pokémon"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
+          value={query}
+          onChangeText={setQuery}
         />
         <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
           <Text style={styles.searchButtonText}>Search</Text>

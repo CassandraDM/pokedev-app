@@ -1,6 +1,7 @@
 import {
   ImageBackground,
   View,
+  ScrollView,
   FlatList,
   StyleSheet,
   Image,
@@ -11,14 +12,26 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import useGetPokemons from "@/hook/useGetPokemons";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 
 export default function PokemonList() {
   const route = useRouter();
 
-  const pokemons = useGetPokemons();
+  const [selectedGeneration, setSelectedGeneration] = useState<number | null>(
+    null
+  );
+  const pokemons = useGetPokemons(selectedGeneration);
 
   const goToPokemonDetailsScreen = (id: number) => {
     route.push(`/pokemon-list/details/${id}`);
+  };
+
+  const handleGenerationSelect = (generation: number) => {
+    setSelectedGeneration(generation);
+  };
+
+  const handleResetGeneration = () => {
+    setSelectedGeneration(null);
   };
 
   if (!pokemons) {
@@ -32,6 +45,25 @@ export default function PokemonList() {
     >
       <View style={styles.container}>
         <Header />
+        <ScrollView horizontal>
+          <View style={styles.generationContainer}>
+            <TouchableOpacity
+              style={styles.generationButton}
+              onPress={handleResetGeneration}
+            >
+              <Text style={styles.generationText}>All</Text>
+            </TouchableOpacity>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((generation) => (
+              <TouchableOpacity
+                key={generation}
+                style={styles.generationButton}
+                onPress={() => handleGenerationSelect(generation)}
+              >
+                <Text style={styles.generationText}>Gen {generation}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
         <FlatList
           data={pokemons}
           keyExtractor={(pokemon) => pokemon.id.toString()}
@@ -63,6 +95,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingTop: 30,
+  },
+  generationContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingTop: 10,
+    marginBottom: 20,
+    gap: 10,
+  },
+  generationButton: {
+    padding: 10,
+    height: 40,
+    backgroundColor: "#ccc",
+    borderRadius: 5,
+  },
+  generationText: {
+    fontSize: 16,
   },
   pokemonContainer: {
     alignItems: "center",

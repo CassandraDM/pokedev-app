@@ -45,6 +45,16 @@ export default function RootLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="fight"
+        options={{
+          title: "Combat",
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="skull" color={color} size={size} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

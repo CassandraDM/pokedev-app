@@ -17,6 +17,14 @@ export default function PokemonListLayout() {
           headerTintColor: "#fff",
         }}
       />
+      <Stack.Screen
+        name="search/[query]"
+        options={{
+          title: "Resultat",
+          headerTransparent: true,
+          headerTintColor: "#fff",
+        }}
+      />
     </Stack>
   );
 }

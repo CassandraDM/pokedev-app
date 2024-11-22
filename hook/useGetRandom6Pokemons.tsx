@@ -3,7 +3,8 @@ import useGetPokemons from "./useGetPokemons";
 import { PokemonDTO } from "@/dto/PokemonDTO";
 
 export default function useGetRandom6Pokemons() {
-  const pokemons = useGetPokemons();
+  const generation = null; // or set a specific generation number
+  const pokemons = useGetPokemons(generation);
   const [selectedPokemons, setSelectedPokemons] = useState<PokemonDTO[]>([]);
 
   useEffect(() => {

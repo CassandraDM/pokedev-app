@@ -43,6 +43,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 30,
   },
+  h1: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
   image: {
     width: 200,
     height: 200,

@@ -1,7 +1,7 @@
 import { PokemonDTO } from "@/dto/PokemonDTO";
 import { useEffect, useState } from "react";
 
-export default function useGetRandomMeal() {
+export default function useGetRandomPokemon() {
   const [pokemon, setPokemon] = useState<PokemonDTO | null>(null);
 
   const id = Math.floor(Math.random() * 898) + 1;
